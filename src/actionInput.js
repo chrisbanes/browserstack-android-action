@@ -11,7 +11,6 @@ class ActionInput {
         this.browserstackUsername = core.getInput('browserstackUsername');
         this.browserstackAccessKey = core.getInput('browserstackAccessKey');
         this.project = core.getInput('project');
-        this.testPackagePath = core.getInput('testPackagePath');
         this.appFilePath = core.getInput('appFilePath');
         this.testFilePath = core.getInput('testFilePath');
         this.devices = core.getInput('devices');
@@ -19,7 +18,6 @@ class ActionInput {
         this.buildTag = core.getInput('buildTag');
 
         this.isAndroid = this.appFilePath && this.testFilePath;
-        this.isIOS = this.testPackagePath;
     }
 
     _validateInput() {
@@ -30,12 +28,8 @@ class ActionInput {
             throw Error(`browserstackAccessKey not set`);
         }
 
-        if (!this.isAndroid && !this.isIOS) {
-            throw Error(`Action needs at least one of testPackagePath (iOS) or appFilePath & testFilePath (Android) defined`);
-        }
-
-        if (this.isAndroid && this.isIOS) {
-            throw Error(`Android and iOS at the same time is not supported`);
+        if (!this.appFilePath && !this.testFilePath) {
+            throw Error(`Action needs appFilePath & testFilePath (Android) defined`);
         }
 
         if (!this.devices) {

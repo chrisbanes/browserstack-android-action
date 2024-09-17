@@ -1,4 +1,4 @@
-# Browserstack Flutter Action
+# Browserstack Android Action
 
 This action fulfils the following objectives in your runner environment:
 * Uploading the app/testsuite paths provided to browserstack
@@ -8,8 +8,7 @@ This action fulfils the following objectives in your runner environment:
 ## Prerequisites
 * The **actions/checkout@v4** action should be invoked prior to invoking this action as we will be using config files committed to the repo
 * App and Tests have to be build before this step see:
-  * iOS: https://www.browserstack.com/docs/app-automate/flutter-ios/getting-started
-  * Android: https://www.browserstack.com/docs/app-automate/flutter/getting-started
+  * Android: https://www.browserstack.com/docs/app-automate/espresso/getting-started
 
 
 ## Inputs
@@ -37,8 +36,6 @@ This action fulfils the following objectives in your runner environment:
   * The app url for the Android APK on Browserstack
 * `test_suite_url`:
   * The test file url for the Android APK on Browserstack
-* `test_package_url`:
-  * The test package url for the iOS App on Browserstack
 * `build_id`:
   * The build id for the triggered testrun
 * `test_result`:
@@ -48,7 +45,7 @@ This action fulfils the following objectives in your runner environment:
 Use the code snippet below in your workflow to upload run a flutter android test:
 ```yaml
   name: Upload and Run Tests on Browserstack
-  uses: Grodien/browserstack-flutter-action@v1.3
+  uses: chrisbanes/browserstack-android-action@v1.3
   with:
     browserstackUsername: ${{ secrets.BROWSERSTACK_USERNAME }}
     browserstackAccessKey: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
@@ -58,18 +55,4 @@ Use the code snippet below in your workflow to upload run a flutter android test
     appFilePath: ${{ github.workspace }}/build/app/outputs/flutter-apk/app-dev-debug.apk
     testFilePath: ${{ github.workspace }}/build/app/outputs/apk/androidTest/dev/debug/app-dev-debug-androidTest.apk
     devices: Samsung Galaxy Tab S9-13.0,Samsung Galaxy Tab S8-12.0
-```
-
-Use the code snippet below in your workflow to upload run a flutter ios test:
-```yaml
-- name: Upload and Run on Browserstack
-  uses: Grodien/browserstack-flutter-action@v1.3
-  with:
-    browserstackUsername: ${{ secrets.BROWSERSTACK_USERNAME }}
-    browserstackAccessKey: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
-    project: example
-    customId: example_ios
-    buildTag: example_ios
-    testPackagePath: ${{ github.workspace }}/build/ios_integration/Build/Products/app-integrationtest-release.zip
-    devices: iPad 9th-15
 ```

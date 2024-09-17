@@ -1,35 +1,33 @@
-name: 'Browserstack Flutter Action'
-description: 'Uploads a Flutter Android/iOS app to Browserstack and runs the tests'
+name: Browserstack Android Action
+description: Uploads an Android app to Browserstack and runs the tests
 inputs:
   browserstackUsername:
-    description: 'Browserstack Username'
+    description: Browserstack Username
   browserstackAccessKey:
-    description: 'Browserstack Access Key'
+    description: Browserstack Access Key
   project:
-    description: 'Projectname'
-  testPackagePath:
-    description: 'Flutter iOS Testpackage Path'
+    description: Projectname
   appFilePath:
-    description: 'Flutter Android apk'
+    description: Flutter Android apk
   testFilePath:
-    description: 'Flutter Android androidTest apk'
+    description: Flutter Android androidTest apk
   devices:
-    description: 'Devices to test on see https://www.browserstack.com/list-of-browsers-and-platforms/app_automate'
+    description: >-
+      Devices to test on see
+      https://www.browserstack.com/list-of-browsers-and-platforms/app_automate
   buildTag:
-    description: 'Build Tag for the triggered testrun'
+    description: Build Tag for the triggered testrun
   customId:
-    description: 'Custom Id for the uploaded files'
+    description: Custom Id for the uploaded files
 outputs:
   app_url:
-    description: 'The app url for the Android APK on Browserstack'
+    description: The app url for the Android APK on Browserstack
   test_suite_url:
-    description: 'The test file url for the Android APK on Browserstack'
-  test_package_url:
-    description: 'The test package url for the iOS App on Browserstack'
+    description: The test file url for the Android APK on Browserstack
   build_id:
-    description: 'The build id for the triggered testrun'
+    description: The build id for the triggered testrun
   test_result:
-    description: 'The test result from browserstack (json)'
+    description: The test result from browserstack (json)
 runs:
-  using: 'node20'
-  main: 'dist/index.js'
+  using: node20
+  main: dist/index.js

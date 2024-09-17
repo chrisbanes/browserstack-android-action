@@ -6,12 +6,7 @@ const run = async () => {
     try {
         console.log(`Starting action...`);
         const actionInput = new ActionInput();
-
-        if (actionInput.isAndroid) {
-            await Browserstack.uploadAndroidAndRunTests(actionInput);
-        } else if (actionInput.isIOS) {
-            await Browserstack.uploadIOSAndRunTests(actionInput);
-        }
+        await Browserstack.uploadAndroidAndRunTests(actionInput);
     } catch (e) {
         core.setFailed(`Action Failed: ${e}`);
     }
