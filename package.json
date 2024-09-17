@@ -17,6 +17,7 @@
   "devDependencies": {
     "@vercel/ncc": "^0.38.1",
     "chai": "^4.3.4",
+    "convert-action": "^0.4.0",
     "mocha": "^10.2.0",
     "sinon": "^18.0.0"
   }
